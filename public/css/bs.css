@@ -1,0 +1,74 @@
+:root {
+    --color1 :#DDE3FD;
+    --color2 :#798EF6;
+    --color3 :#183BF0;
+    --color4 :#0A2299;
+    --color5 :#091034;
+}
+
+body {
+    padding-bottom: 20px;
+    background: #333333;
+    font-size:1.2em;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.bs-project-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+.bs-med-bg {
+    background: #555;
+}
+
+.bs-dark-blue-text{
+    color: var(--color4);
+}
+.bs-light-bg {
+    background-color: var(--color1);
+}
+.bs-jumbo
+{
+    background: #FFFFFF;
+    margin-top: 100px;
+    border-radius:10px;
+}
+
+    .shadowed {
+        box-shadow: 0 3px 8px 0 rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,0.04);
+    }
+
+.aboutBox{
+    border-radius:10px;
+    padding: 25px 40px;
+    background: white;
+}
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
