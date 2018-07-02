@@ -24,7 +24,8 @@
         "symfony/validator": "^4.1",
         "symfony/web-link": "^4.1",
         "symfony/webpack-encore-pack": "*",
-        "symfony/yaml": "^4.1"
+        "symfony/yaml": "^4.1",
+        "symfony/apache-pack": "^1.0"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -74,5 +75,10 @@
         "symfony": {
             "allow-contrib": false
         }
+    },
+    "config": {
+        "bin-dir": "bin",
+        "vendor-dir": "/app/vendor"
     }
+    
 }
