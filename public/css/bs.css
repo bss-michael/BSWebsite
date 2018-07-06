@@ -49,6 +49,13 @@ body {
     padding: 25px 40px;
     background: white;
 }
+
+.bs-button{
+    background:#555555;
+    color:white;
+}
+
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

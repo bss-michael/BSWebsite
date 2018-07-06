@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
+<ul class="list-group">
+
+    {% for project in projects %}
+        <li class="list-group-item" >
+        <h3>{{ project.Name }}</h2>
+        <p>{{ project.Description | raw }}</p>
+        
+        </li>
+
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}
