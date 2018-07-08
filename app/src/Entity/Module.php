@@ -34,8 +34,7 @@ class Module
     private $Discussion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="modules")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $Project;
 
@@ -95,7 +94,7 @@ class Module
         return $this->Project;
     }
 
-    public function setProject(?Project $Project): self
+    public function setProject(?int $Project): self
     {
         $this->Project = $Project;
 

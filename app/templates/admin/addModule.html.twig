@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
+<form method="POST" action="/admin/projects/{{project}}/module/add">
+    <div class="form-control-group">
+        <label  for="Name">Name</label>
+        <input class="form-control" type="text" id="Name" name="Name" required/>
+    </div>
+
+    <div class="form-control-group">
+        <label  for="Summary">Summary</label>
+        <textarea class="form-control" rows="5" id="Summary" name="Summary" required></textarea>
+    </div>
+
+    <div class="form-control-group">
+        <label  for="Discussion">Discussion</label>
+        <textarea class="form-control" rows="15" id="Discussion" name="Discussion" required></textarea>
+    </div>
+
+
+    <input type="submit" value="Add" class="btn bs-button shadowed mt-3">
+</form>
+
+</div>
+{% endblock %}

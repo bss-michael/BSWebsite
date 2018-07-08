@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
+    {% dump modules %}
+        {% dump project.id %}
+    <a href="/admin/projects/{{project.id}}/module/add" class="btn bs-btn">Add Module</a>
+    <h3>{{project.name}}</h3>
+    <p>{{project.description | raw}}</p>
+
+    <ul class="list-group">
+        {% for module in modules %}
+            <li class="list-group-item">{{module.name}}  -  {{module.summary}}</li>
+        {% endfor %}
+    </ul>
+
+
+</div>
+{% endblock %}
