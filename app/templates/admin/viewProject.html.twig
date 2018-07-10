@@ -13,7 +13,7 @@
 
     <ul class="list-group">
         {% for module in modules %}
-            <li class="list-group-item">{{module.name}}  -  {{module.summary}}</li>
+            <li class="list-group-item"> <a href="/admin/projects/{{project.id}}/module/{{module.id}}">{{module.name}}  -  {{module.summary}}</a></li>
         {% endfor %}
     </ul>
 

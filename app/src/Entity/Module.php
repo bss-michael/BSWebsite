@@ -89,7 +89,7 @@ class Module
         return $this;
     }
 
-    public function getProject(): ?Project
+    public function getProject(): ?int
     {
         return $this->Project;
     }

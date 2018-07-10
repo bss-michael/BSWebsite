@@ -10,6 +10,21 @@ use App\Entity\Module;
 
 class ModuleController extends Controller
 {
+
+    /**
+     * @Route("/admin/projects/{projectID}/module/{moduleID}", name="viewModule")
+     */
+    public function index($projectID, $moduleID)
+    {
+        //Get module from Database
+        $module = $this->getDoctrine()->getRepository(Module::class)->find($moduleID);
+
+        return $this->render('admin/viewModule.html.twig', [
+            'module' => $module
+        ]);
+
+    }
+
     /**
      * @Route("/admin/projects/{projectID}/module/add", name="addModule")
      */
@@ -38,6 +53,25 @@ class ModuleController extends Controller
                 'project' => $projectID
             ]);
         }
+
+    }
+
+    /**
+     * @Route("/admin/projects/{projectID}/module/{moduleID}/delete", name="deleteModule")
+     */
+    public function deleteModule($projectID, $moduleID)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $module =  $em->getRepository(Module::class)->find($moduleID);
+
+        if($module)
+        {
+            $em->remove($module);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('viewProject', array('projectID' => $projectID));
 
     }
 

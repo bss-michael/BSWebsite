@@ -28,16 +28,6 @@ class Project
      */
     private $Description;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Module", mappedBy="Project")
-     */
-    private $modules;
-
-    public function __construct()
-    {
-        $this->modules = new ArrayCollection();
-    }
-
     public function getId()
     {
         return $this->id;
@@ -67,34 +57,5 @@ class Project
         return $this;
     }
 
-    /**
-     * @return Collection|Module[]
-     */
-    public function getModules(): Collection
-    {
-        return $this->modules;
-    }
 
-    public function addModule(Module $module): self
-    {
-        if (!$this->modules->contains($module)) {
-            $this->modules[] = $module;
-            $module->setProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeModule(Module $module): self
-    {
-        if ($this->modules->contains($module)) {
-            $this->modules->removeElement($module);
-            // set the owning side to null (unless already changed)
-            if ($module->getProject() === $this) {
-                $module->setProject(null);
-            }
-        }
-
-        return $this;
-    }
 }

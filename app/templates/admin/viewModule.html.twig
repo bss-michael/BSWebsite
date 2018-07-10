@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
+    <a href="/admin/projects/{{module.project}}/module/{{module.id}}/edit" class="btn bs-btn">Edit Module</a>
+    <a href="/admin/projects/{{module.project}}/module/{{module.id}}/delete" class="btn bs-btn">Delete Module</a>
+
+    <h3>{{module.name}}</h3>
+    <p>{{module.summary | raw}}</p>
+    <p>{{module.discussion}}</p>
+
+
+</div>
+{% endblock %}
