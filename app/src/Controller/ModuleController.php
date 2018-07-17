@@ -36,7 +36,7 @@ class ModuleController extends Controller
 
          
             $slug = $slugHelper->create($request->get('Name'));
-            $slug = $slugHelper->getUnique($slug, $em);
+            $slug = $slugHelper->getUniqueModule($slug, $em);
 
             $module->setSlug($slug);
 
@@ -120,7 +120,7 @@ class ModuleController extends Controller
 
         }else{
             //Handle GET
-            return $this->render('admin/editModule.html.twig', ['module' => $module]);
+            return $this->render('admin/editModule.html.twig', ['module' => $module, 'projectSlug' => $projectSlug]);
         }        
     }
 
@@ -130,11 +130,13 @@ class ModuleController extends Controller
      */
     public function index($projectSlug, $moduleSlug)
     {
-        //Get module from Database
+
+
         $module = $this->getDoctrine()->getRepository(Module::class)->findOneBy(['Slug' => $moduleSlug]);
 
         return $this->render('admin/viewModule.html.twig', [
-            'module' => $module
+            'module' => $module,
+            'projectSlug' => $projectSlug
         ]);
 
     }

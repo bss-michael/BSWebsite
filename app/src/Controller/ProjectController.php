@@ -42,7 +42,7 @@ class ProjectController extends Controller
             $project->setDescription($request->get('Description'));
 
             $slug = $slugHelper->create($request->get('Name'));
-            $slug = $slugHelper->getUnique($slug);
+            $slug = $slugHelper->getUniqueProject($slug, $em);
 
             $project->setSlug($slug);
 
@@ -50,7 +50,7 @@ class ProjectController extends Controller
 
             $em->flush();
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('projects');
 
 
         }else {

@@ -3,13 +3,14 @@
 namespace App\Services;
 
 use App\Entity\Module;
+use App\Entity\Project;
 
 class SlugHelper
 {
     /**
      * Checks for uniqueness, and alters slug if necessary
      */
-    public function getUnique($slug, $em)
+    public function getUniqueModule($slug, $em)
     {
         $slugEnd = "";
         $i=0;
@@ -32,6 +33,35 @@ class SlugHelper
         
         return $slug;
     }
+
+    /**
+     * Checks for uniqueness, and alters slug if necessary
+     */
+    public function getUniqueProject($slug, $em)
+    {
+        $slugEnd = "";
+        $i=0;
+        $slugCheck = true;
+
+        while($slugCheck) //Do until checking the database for slug returns null (ie, there is no entry using that slug)
+        {
+            $slugCheck = $em->getRepository(Project::class)->findOneBy(['Slug' => $slug.$slugEnd]);
+                if($slugCheck)
+                {
+
+                    //Increment $i and add to the end of the slug
+                    $i++;
+                    $slugEnd = "-".$i;
+               
+                }
+        }
+
+        $slug .= $slugEnd;
+        
+        return $slug;
+    }
+
+
 
     /**
      *     Replace spaces with dashes, strip nonalphanumeric characters, and change to all lowercase

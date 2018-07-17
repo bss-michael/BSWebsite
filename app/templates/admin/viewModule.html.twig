@@ -5,9 +5,9 @@
 {% block body %}
 
 <div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
-    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}/edit" class="btn bs-button">Edit Module</a>
-    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}/delete" class="btn bs-button">Delete Module</a>
-    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}" class="btn bs-button">Cancel</a>
+    <a href="/admin/projects/{{projectSlug}}/modules/{{module.slug}}/edit" class="btn bs-button">Edit Module</a>
+    <a href="/admin/projects/{{projectSlug}}/modules/{{module.slug}}/delete" class="btn bs-button">Delete Module</a>
+    <a href="/admin/projects/{{projectSlug}}" class="btn bs-button">Back</a>
 
 
     <h3>{{module.name}}</h3>

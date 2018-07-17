@@ -15,10 +15,8 @@
         </div>
     {% endfor %}
 
-    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}/edit" class="btn bs-btn">Edit Module</a>
-    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}/delete" class="btn bs-btn">Delete Module</a>
 
-    <form action="/admin/projects/{{module.project}}/modules/{{module.slug}}/edit" method="POST">
+    <form action="/admin/projects/{{projectSlug}}/modules/{{module.slug}}/edit" method="POST">
         <div class="form-group">
             <input type="hidden" name="Id" value="{{module.id}}">
             <label for="Name">Name</label>
@@ -39,7 +37,8 @@
             <label for="Discussion">Discussion</label>
             <textarea rows=25 class="form-control" name="Discussion" required >{{module.discussion | raw}}</textarea>
         </div>
-        <input type="submit" class="btn bs-button">
+        <input type="submit" class="btn bs-button" value="Save">     <a class="btn bs-button" href="/admin/projects/{{projectSlug}}/modules/{{module.slug}}" class="btn bs-btn">Cancel</a>
+
     </form>
 
 </div>
