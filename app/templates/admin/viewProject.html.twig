@@ -5,17 +5,17 @@
 {% block body %}
 
 <div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
-    {% dump modules %}
-        {% dump project.id %}
-    <a href="/admin/projects/{{project.id}}/module/add" class="btn bs-btn">Add Module</a>
-    <h3>{{project.name}}</h3>
-    <p>{{project.description | raw}}</p>
+        {% if project %}
+        <a href="/admin/projects/{{project.slug}}/modules/add" class="btn bs-btn">Add Module</a>
+        <h3>{{project.name}}</h3>
+        <p>{{project.description | raw}}</p>
 
-    <ul class="list-group">
-        {% for module in modules %}
-            <li class="list-group-item"> <a href="/admin/projects/{{project.id}}/module/{{module.id}}">{{module.name}}  -  {{module.summary}}</a></li>
-        {% endfor %}
-    </ul>
+        <ul class="list-group">
+            {% for module in modules %}
+                <li class="list-group-item"> <a href="/admin/projects/{{project.slug}}/modules/{{module.slug}}">{{module.name}}  -  {{module.summary}}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 
 </div>

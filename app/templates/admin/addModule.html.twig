@@ -5,8 +5,9 @@
 {% block body %}
 
 <div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
-<form method="POST" action="/admin/projects/{{project}}/module/add">
+<form method="POST" action="/admin/projects/{{project.slug}}/modules/add">
     <div class="form-control-group">
+        <input type="hidden" name="projectID" value="project.id">
         <label  for="Name">Name</label>
         <input class="form-control" type="text" id="Name" name="Name" required/>
     </div>

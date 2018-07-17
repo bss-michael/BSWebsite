@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Project;
 use App\Entity\Module;
-
+use App\Services\SlugHelper;
 class ProjectController extends Controller
 {
     /**
@@ -27,25 +27,11 @@ class ProjectController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/admin/projects/{projectID}", name="viewProject")
-     */
-    public function viewProject($projectID)
-    {
-        $project = $this->getDoctrine()->getRepository(Project::class)->find($projectID);
-        $modules = $this->getDoctrine()->getRepository(Module::class)->findBy(['Project' => intval($projectID)]);
-
-        return $this->render('admin/viewProject.html.twig', [
-            'project' => $project,
-            'modules' => $modules
-        ]);
-    }
-
-    /**
+        /**
      * @Route("/admin/projects/create", name="createProject")
      */
 
-    public function createProject(Request $request)
+    public function createProject(Request $request, SlugHelper $slugHelper)
     {
         if($request->getMethod() == "POST")
         {
@@ -54,6 +40,11 @@ class ProjectController extends Controller
             $project = new Project();
             $project->setName($request->get('Name'));
             $project->setDescription($request->get('Description'));
+
+            $slug = $slugHelper->create($request->get('Name'));
+            $slug = $slugHelper->getUnique($slug);
+
+            $project->setSlug($slug);
 
             $em->persist($project);
 
@@ -69,5 +60,23 @@ class ProjectController extends Controller
         }
 
     }
+
+
+
+    /**
+     * @Route("/admin/projects/{projectSlug}", name="viewProject")
+     */
+    public function viewProject($projectSlug)
+    {
+        $project = $this->getDoctrine()->getRepository(Project::class)->findOneBy(['Slug' => $projectSlug]);
+        $modules = $this->getDoctrine()->getRepository(Module::class)->findBy(['Project' => intval($project->getId())]);
+
+        return $this->render('admin/viewProject.html.twig', [
+            'project' => $project,
+            'modules' => $modules
+        ]);
+    }
+
+
 
 }

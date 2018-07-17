@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
+    <!--Display any error messages -->
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}/edit" class="btn bs-btn">Edit Module</a>
+    <a href="/admin/projects/{{module.project}}/modules/{{module.slug}}/delete" class="btn bs-btn">Delete Module</a>
+
+    <form action="/admin/projects/{{module.project}}/modules/{{module.slug}}/edit" method="POST">
+        <div class="form-group">
+            <input type="hidden" name="Id" value="{{module.id}}">
+            <label for="Name">Name</label>
+            <input id="Name" name="Name" type="text"  value='{{module.name}}' class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="Slug">Slug</label>
+            <input id="Slug" name="Slug" type="text" value='{{module.slug}}' class="form-control"  required >
+        </div>
+
+        <div class="form-group">
+            <label for="Summary">Summary</label>
+            <textarea class="form-control" name="Summary" required >{{module.summary | raw}}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="Discussion">Discussion</label>
+            <textarea rows=25 class="form-control" name="Discussion" required >{{module.discussion | raw}}</textarea>
+        </div>
+        <input type="submit" class="btn bs-button">
+    </form>
+
+</div>
+{% endblock %}

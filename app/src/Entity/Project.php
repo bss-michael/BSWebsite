@@ -21,6 +21,11 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $Slug;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $Name;
 
     /**
@@ -31,6 +36,18 @@ class Project
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->Slug;
+    }
+
+    public function setSlug(string $Slug): self
+    {
+        $this->Slug = $Slug;
+
+        return $this;
     }
 
     public function getName(): ?string

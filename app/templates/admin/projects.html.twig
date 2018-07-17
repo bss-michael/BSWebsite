@@ -8,7 +8,7 @@
 <ul class="list-group">
 
     {% for project in projects %}
-        <li onclick="location.href='/admin/projects/{{project.id}}';" class="clickable list-group-item" >
+        <li onclick="location.href='/admin/projects/{{project.slug}}';" class="clickable list-group-item" >
         <h3>{{ project.Name }}</h3>
         <p>{{ project.Description | raw }}</p>
         
