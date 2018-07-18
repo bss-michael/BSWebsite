@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{% dump(project) %}
+<div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
+    <!--Display any error messages -->
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<form method="POST" action="/admin/projects/{{project.slug}}/edit">
+    <div class="form-control-group">
+        <input type="hidden" name="Id" value="{{project.id}}">
+        <label  for="Slug">Slug</label>
+        <input class="form-control" type="text" id="Slug" name="Slug" value="{{project.slug}}" required/>
+    </div>
+
+    <div class="form-control-group">
+        <label  for="Name">Name</label>
+        <input class="form-control" type="text" id="Name" name="Name" value="{{project.name}}" required/>
+    </div>
+
+    <div class="form-control-group">
+        <label  for="Description">Description</label>
+        <textarea class="form-control" rows="10" id="Description" name="Description"  required>{{project.description}}</textarea>
+    </div>
+
+    <input type="submit" value="Save" class="btn bs-button shadowed mt-3">
+      <a  href="/admin/projects/{{project.slug}}" class="btn bs-button shadowed mt-3">Cancel</a>
+</form>
+
+</div>
+{% endblock %}

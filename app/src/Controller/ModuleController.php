@@ -48,7 +48,7 @@ class ModuleController extends Controller
 
 
         }else {
-            return $this->render('admin/addModule.html.twig', [
+            return $this->render('admin/Module/addModule.html.twig', [
                 'project' => $project
             ]);
         }
@@ -120,7 +120,7 @@ class ModuleController extends Controller
 
         }else{
             //Handle GET
-            return $this->render('admin/editModule.html.twig', ['module' => $module, 'projectSlug' => $projectSlug]);
+            return $this->render('admin/Module/editModule.html.twig', ['module' => $module, 'projectSlug' => $projectSlug]);
         }        
     }
 
@@ -134,7 +134,7 @@ class ModuleController extends Controller
 
         $module = $this->getDoctrine()->getRepository(Module::class)->findOneBy(['Slug' => $moduleSlug]);
 
-        return $this->render('admin/viewModule.html.twig', [
+        return $this->render('admin/Module/viewModule.html.twig', [
             'module' => $module,
             'projectSlug' => $projectSlug
         ]);

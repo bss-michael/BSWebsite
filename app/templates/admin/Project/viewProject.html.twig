@@ -7,7 +7,11 @@
 <div class="shadowed col-sm-12 col-md-10 offset-md-1 bs-jumbo p-5">
         {% if project %}
         <a class="btn bs-button" href="/admin/projects/{{project.slug}}/modules/add" class="btn bs-btn">Add Module</a>
-                <a class="btn bs-button" href="/admin/projects" class="btn bs-btn">Back</a>
+        <a class="btn bs-button" href="/admin/projects/{{project.slug}}/edit" class="btn bs-btn">Edit Project</a>
+        <a class="btn bs-button" href="/admin/projects/{{project.slug}}/delete" class="btn bs-btn">Delete Project</a>
+
+        <a class="btn bs-button" href="/admin/projects" class="btn bs-btn">Back</a>
+
 
         <h3>{{project.name}}</h3>
         <p>{{project.description | raw}}</p>
